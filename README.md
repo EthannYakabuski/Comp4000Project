@@ -1,26 +1,25 @@
 # Comp4000Project
 Task #1: is very straight forward. 
 
-Task #2: General instructions can be found at grpc.io/docs/languages/python/quickstart, but this is the series of commands that work for ubuntu 10.4
-This turns out to be harded on some machines then other, https://stackoverflow.com/questions/55422929/e-unable-to-locate-package-python-pip-on-ubuntu-18-04, taking a look here one of these should do the trick. On the class VM it was the option using the ls/bin/python thing
+Task #2: General instructions can be found at grpc.io/docs/languages/python/quickstart. 
+https://linuxize.com/post/how-to-install-pip-on-ubuntu-20.04/ following this is what ended up actually working, and I have updated the commands below to work as well. 
 
+Below is what worked for the class VM:
 
-sudo apt install python-pip
+sudo apt update
+
+sudo apt install python3-pip
 
 python -m pip install grpcio
 
 python -m pip install grpcio-tools
 
-pip install --upgrade pip
+pip3 install --upgrade pip
 
-pip install protobuf
-
-pip install grcpio-reflection
-
+pip3 install protobuf
 
 open one terminal 
 -> python greeter_server.py
-
 
 open another terminal 
 -> python greeter_client.py
