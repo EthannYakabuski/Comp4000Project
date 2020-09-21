@@ -2,6 +2,8 @@
 Task #1: is very straight forward. 
 
 Task #2: General instructions can be found at grpc.io/docs/languages/python/quickstart, but this is the series of commands that work for ubuntu 10.4
+This turns out to be harded on some machines then other, https://stackoverflow.com/questions/55422929/e-unable-to-locate-package-python-pip-on-ubuntu-18-04, taking a look here one of these should do the trick. On the class VM it was the option using curl. 
+
 
 sudo apt install python-pip
 
