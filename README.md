@@ -26,7 +26,7 @@ open another terminal
 you should immediately see output: "Greeter client received: Hello you"
 
 
-Task #3: (Had serious issues with setting up the environment correctly, tried many things, ultimately booted python in a virtual environment, on the virtual environment and installed grpcio and grpcio-tools there, worked successfully) Steps shown in the quick start guide: /home/student/Project/Comp4000Project/greeter_client.py
+Task #3: (Had serious issues with setting up the environment correctly, tried many things, ultimately booted python in a virtual environment, on the virtual environment and installed grpcio and grpcio-tools there, worked successfully) Steps shown in the quick start guide: grpc.io/docs/languages/python/quickstart
 
 Taking the base helloworld.proto from the grpc examples folder,
 modify the greeter service adding the second field to represent the second string we are asked for in this task. 
