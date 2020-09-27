@@ -26,20 +26,30 @@ service Greeter {
   // Sends a greeting
   rpc SayHello (HelloRequest) returns (HelloReply) {}
   
-    
+  // Ask for the user name
+  rpc UserName (UserNameRequest) returns (UserNameReply) {}    
  
 }
 
-// The request message containing the user's name.
+// The request hello message
 message HelloRequest {
   string name = 1;
   string argument = 2;
 }
 
-
-// The response message containing the greetings
+// The response message containing the greetings (the initial hello)
 message HelloReply {
   string message = 1;
+}
 
+// The response containing the username of the client
+message UserNameReply {
+  string message = 1; 
+  string userName = 2; 
+}
+
+// The request message, asking for the users, users name
+message UserNameRequest {
+  string userName = 1; 
 }
 

@@ -28,6 +28,11 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
         return taskFour_pb2.HelloReply(message='Hello, %s!' % request.name)
 
 
+    def UserName(self, request, context):
+        print("Name received: " + request.userName)
+        return taskFour_pb2.UserNameReply(message=request.userName)
+
+
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     taskFour_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)

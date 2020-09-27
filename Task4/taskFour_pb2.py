@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2I\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
+  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"2\n\rUserNameReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\"#\n\x0fUserNameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t2\x8f\x01\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x44\n\x08UserName\x12\x1b.helloworld.UserNameRequest\x1a\x19.helloworld.UserNameReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
 )
 
 
@@ -95,8 +95,81 @@ _HELLOREPLY = _descriptor.Descriptor(
   serialized_end=107,
 )
 
+
+_USERNAMEREPLY = _descriptor.Descriptor(
+  name='UserNameReply',
+  full_name='helloworld.UserNameReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='helloworld.UserNameReply.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='userName', full_name='helloworld.UserNameReply.userName', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=109,
+  serialized_end=159,
+)
+
+
+_USERNAMEREQUEST = _descriptor.Descriptor(
+  name='UserNameRequest',
+  full_name='helloworld.UserNameRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='userName', full_name='helloworld.UserNameRequest.userName', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=161,
+  serialized_end=196,
+)
+
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['UserNameReply'] = _USERNAMEREPLY
+DESCRIPTOR.message_types_by_name['UserNameRequest'] = _USERNAMEREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
@@ -113,6 +186,20 @@ HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Me
   })
 _sym_db.RegisterMessage(HelloReply)
 
+UserNameReply = _reflection.GeneratedProtocolMessageType('UserNameReply', (_message.Message,), {
+  'DESCRIPTOR' : _USERNAMEREPLY,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.UserNameReply)
+  })
+_sym_db.RegisterMessage(UserNameReply)
+
+UserNameRequest = _reflection.GeneratedProtocolMessageType('UserNameRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERNAMEREQUEST,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.UserNameRequest)
+  })
+_sym_db.RegisterMessage(UserNameRequest)
+
 
 DESCRIPTOR._options = None
 
@@ -123,8 +210,8 @@ _GREETER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=109,
-  serialized_end=182,
+  serialized_start=199,
+  serialized_end=342,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
@@ -133,6 +220,16 @@ _GREETER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_HELLOREQUEST,
     output_type=_HELLOREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='UserName',
+    full_name='helloworld.Greeter.UserName',
+    index=1,
+    containing_service=None,
+    input_type=_USERNAMEREQUEST,
+    output_type=_USERNAMEREPLY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

@@ -29,8 +29,10 @@ def run():
     with grpc.insecure_channel('localhost:50051') as channel:
         stub = taskFour_pb2_grpc.GreeterStub(channel)
         response = stub.SayHello(taskFour_pb2.HelloRequest(name='Task Four'))
+        print('Greeter client received: ' + response.message)
+        inputUserName = input("Enter your username: ");
+        response = stub.UserName(taskFour_pb2.UserNameRequest(userName=inputUserName))
 
-    print("Greeter client received: " + response.message)
 
 
 if __name__ == '__main__':

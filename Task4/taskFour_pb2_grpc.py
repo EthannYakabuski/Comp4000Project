@@ -20,6 +20,11 @@ class GreeterStub(object):
                 request_serializer=taskFour__pb2.HelloRequest.SerializeToString,
                 response_deserializer=taskFour__pb2.HelloReply.FromString,
                 )
+        self.UserName = channel.unary_unary(
+                '/helloworld.Greeter/UserName',
+                request_serializer=taskFour__pb2.UserNameRequest.SerializeToString,
+                response_deserializer=taskFour__pb2.UserNameReply.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -33,6 +38,13 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def UserName(self, request, context):
+        """Ask for the user name
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -40,6 +52,11 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.SayHello,
                     request_deserializer=taskFour__pb2.HelloRequest.FromString,
                     response_serializer=taskFour__pb2.HelloReply.SerializeToString,
+            ),
+            'UserName': grpc.unary_unary_rpc_method_handler(
+                    servicer.UserName,
+                    request_deserializer=taskFour__pb2.UserNameRequest.FromString,
+                    response_serializer=taskFour__pb2.UserNameReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -66,5 +83,22 @@ class Greeter(object):
         return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/SayHello',
             taskFour__pb2.HelloRequest.SerializeToString,
             taskFour__pb2.HelloReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def UserName(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/UserName',
+            taskFour__pb2.UserNameRequest.SerializeToString,
+            taskFour__pb2.UserNameReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
