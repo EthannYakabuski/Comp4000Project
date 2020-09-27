@@ -40,20 +40,17 @@ def run():
             print("sending login information to server -")
             loginAttemptJSON = json.dumps({"username":inputUserName,"password":inputUserPass})
             response = stub.LoginAttempt(taskFour_pb2.LoginAttemptRequest(loginAttempt=loginAttemptJSON))
-
- 
-
-            #send login information to server and check if the account exists or not
-            #create the account if it does not exist
-
+            print(response.Result)
+        else :
+            print("the two passwords you entered weren't the same")
 
 
 def samePass(pass1, pass2):
     if pass1 == pass2 :
-        print("passwords match")
+        #print("passwords match")
         return (pass1 == pass2)
     else :
-        print("passwords do not match")
+        #print("passwords do not match")
         return (pass1 == pass2)
 
 

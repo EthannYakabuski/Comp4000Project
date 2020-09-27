@@ -93,7 +93,8 @@ message PasswordConfirmationRequest {
 // The response containing the status message concerning the login attempt
 message LoginAttemptReply {
   string message = 1; 
-  string loginAttempt = 2;  
+  string loginAttempt = 2; 
+  string Result = 3; 
 }
 
 

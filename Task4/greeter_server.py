@@ -15,11 +15,26 @@
 
 from concurrent import futures
 import logging
-
+import json
 import grpc
 
 import taskFour_pb2
 import taskFour_pb2_grpc
+
+
+import bcrypt
+
+loginStorageDict = {} 
+saltStorageDict = {}
+
+#https://linuxhint.com/parse_json_python/
+#I had never done this in python before, but it doesn't seem
+#like there's an easier way to do it
+#this class stores JSON data into a python dictionary
+#code ripped directly from above link
+class read_data(object):
+    def __init__(self,jsonData):
+        self.__dict__ = json.loads(jsonData)
 
 
 class Greeter(taskFour_pb2_grpc.GreeterServicer):
@@ -42,7 +57,35 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
 
     def LoginAttempt(self, request, context):
         print("Attempting a login: " + request.loginAttempt)
-        return taskFour_pb2.LoginAttemptReply(message=request.loginAttempt)
+        #loginAttemptJSON = json.loads(request.loginAttempt)
+        #for x in loginAttemptJSON:
+           # print("%s: %s" % (x, loginAttemptJSON[x]))
+        dataReader = read_data(request.loginAttempt)
+        usernameAttempted = dataReader.username
+        passwordAttempted = dataReader.password
+        if usernameAttempted in loginStorageDict:
+            print("This username already exists - move onto password verification")
+            #recover the same salt that was used to store the password
+            saltStored = saltStorageDict[usernameAttempted]
+            if bcrypt.checkpw(passwordAttempted.encode('utf8'),loginStorageDict[usernameAttempted]) :
+                print("Matching passwords")
+                returnResult = "Logged in successfully"
+                #login successful code here
+            else :
+                print("Passwords did not match")
+                returnResult = "Password did not match the one stored on server"
+        else :
+            print("This username is new - move onto account creation")
+            salt = bcrypt.gensalt()
+            hashedPassword = bcrypt.hashpw(passwordAttempted.encode('utf8'),salt)
+            #this creates a key,value pair in our loginStorageDictionary as : (usernameAttempted,hash(passwordAttempted))
+            saltStorageDict[usernameAttempted] = salt
+            loginStorageDict[usernameAttempted] = hashedPassword
+            returnResult = "New account created"
+            print("current logins are:", loginStorageDict)
+        #print("Username attempted: " + usernameAttempted) 
+        #print("Password attempted: " + passwordAttempted)
+        return taskFour_pb2.LoginAttemptReply(message=request.loginAttempt,Result=returnResult)
 
 
 
@@ -59,3 +102,8 @@ def serve():
 if __name__ == '__main__':
     logging.basicConfig()
     serve()
+
+
+
+
+
