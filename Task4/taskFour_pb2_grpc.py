@@ -35,6 +35,11 @@ class GreeterStub(object):
                 request_serializer=taskFour__pb2.PasswordConfirmationRequest.SerializeToString,
                 response_deserializer=taskFour__pb2.PasswordConfirmationReply.FromString,
                 )
+        self.LoginAttempt = channel.unary_unary(
+                '/helloworld.Greeter/LoginAttempt',
+                request_serializer=taskFour__pb2.LoginAttemptRequest.SerializeToString,
+                response_deserializer=taskFour__pb2.LoginAttemptReply.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -69,6 +74,13 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def LoginAttempt(self, request, context):
+        """Login attempt after password has been confirmed
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -91,6 +103,11 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.PasswordConfirmation,
                     request_deserializer=taskFour__pb2.PasswordConfirmationRequest.FromString,
                     response_serializer=taskFour__pb2.PasswordConfirmationReply.SerializeToString,
+            ),
+            'LoginAttempt': grpc.unary_unary_rpc_method_handler(
+                    servicer.LoginAttempt,
+                    request_deserializer=taskFour__pb2.LoginAttemptRequest.FromString,
+                    response_serializer=taskFour__pb2.LoginAttemptReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -168,5 +185,22 @@ class Greeter(object):
         return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/PasswordConfirmation',
             taskFour__pb2.PasswordConfirmationRequest.SerializeToString,
             taskFour__pb2.PasswordConfirmationReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def LoginAttempt(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/LoginAttempt',
+            taskFour__pb2.LoginAttemptRequest.SerializeToString,
+            taskFour__pb2.LoginAttemptReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

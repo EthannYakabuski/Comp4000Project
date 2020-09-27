@@ -15,7 +15,7 @@
 
 from __future__ import print_function
 import logging
-
+import json
 import grpc
 
 import taskFour_pb2
@@ -38,7 +38,11 @@ def run():
         response = stub.PasswordConfirmation(taskFour_pb2.PasswordConfirmationRequest(passwordConfirmed=inputUserPassConfirmation))
         if samePass(inputUserPass,inputUserPassConfirmation) :
             print("sending login information to server -")
-            
+            loginAttemptJSON = json.dumps({"username":inputUserName,"password":inputUserPass})
+            response = stub.LoginAttempt(taskFour_pb2.LoginAttemptRequest(loginAttempt=loginAttemptJSON))
+
+ 
+
             #send login information to server and check if the account exists or not
             #create the account if it does not exist
 

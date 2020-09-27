@@ -36,9 +36,14 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
         print("Password received: " + request.password)
         return taskFour_pb2.PasswordEnterReply(message=request.password)
 
-    def PasswordConfirmation(setl, request, context):
+    def PasswordConfirmation(self, request, context):
         print("Password confirmation received: " + request.passwordConfirmed)
         return taskFour_pb2.PasswordConfirmationReply(message=request.passwordConfirmed)
+
+    def LoginAttempt(self, request, context):
+        print("Attempting a login: " + request.loginAttempt)
+        return taskFour_pb2.LoginAttemptReply(message=request.loginAttempt)
+
 
 
 

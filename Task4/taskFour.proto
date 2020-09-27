@@ -37,7 +37,8 @@ service Greeter {
   rpc PasswordConfirmation (PasswordConfirmationRequest) returns (PasswordConfirmationReply) {}
 
 
-
+  // Login attempt after password has been confirmed
+  rpc LoginAttempt (LoginAttemptRequest) returns (LoginAttemptReply) {}
  
 }
 
@@ -86,6 +87,19 @@ message PasswordConfirmationReply {
 // The request message, asking for the user to confirm the previously entered password
 message PasswordConfirmationRequest {
   string passwordConfirmed = 1; 
+}
+
+
+// The response containing the status message concerning the login attempt
+message LoginAttemptReply {
+  string message = 1; 
+  string loginAttempt = 2;  
+}
+
+
+// The request message, from the client to attempt a login
+message LoginAttemptRequest {
+  string loginAttempt = 1;
 }
 
 
