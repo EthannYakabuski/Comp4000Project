@@ -26,7 +26,7 @@ open another terminal
 you should immediately see output: "Greeter client received: Hello you"
 
 
-Task #3: 
+Task #3: (Had serious issues with setting up the environment correctly, tried many things, ultimately booted python in a virtual environment, on the virtual environment and installed grpcio and grpcio-tools there, worked successfully) Steps shown in the quick start guide: /home/student/Project/Comp4000Project/greeter_client.py
 
 Taking the base helloworld.proto from the grpc examples folder,
 modify the greeter service adding the second field to represent the second string we are asked for in this task. 
@@ -38,3 +38,9 @@ python -m grcp_tools.protoc -I ~/...../python/helloworld --python_out=. --grpc_p
 
 This will generate the new files that we will now reference in greeter_server.py and greeter_client.py
 After making the changes to those two files run commands similar to Task #2 to start the server and client to produce an image exactly as shown in task3.png.
+
+
+Task #4 
+For task four navigate to the appropriate folder. The command to use the stub. proto file is as follows: 
+
+python -m grcp_tools.protoc -I ~/...../Task4 --python_out=. --grpc_python_out=. ~/..../Task4/taskFour.proto
