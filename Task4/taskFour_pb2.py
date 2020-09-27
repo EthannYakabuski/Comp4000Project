@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"2\n\rUserNameReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\"#\n\x0fUserNameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t2\x8f\x01\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x44\n\x08UserName\x12\x1b.helloworld.UserNameRequest\x1a\x19.helloworld.UserNameReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
+  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"2\n\rUserNameReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\"#\n\x0fUserNameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"7\n\x12PasswordEnterReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"(\n\x14PasswordEnterRequest\x12\x10\n\x08password\x18\x01 \x01(\t\"G\n\x19PasswordConfirmationReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x19\n\x11passwordConfirmed\x18\x02 \x01(\t\"8\n\x1bPasswordConfirmationRequest\x12\x19\n\x11passwordConfirmed\x18\x01 \x01(\t2\xce\x02\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x44\n\x08UserName\x12\x1b.helloworld.UserNameRequest\x1a\x19.helloworld.UserNameReply\"\x00\x12S\n\rPasswordEnter\x12 .helloworld.PasswordEnterRequest\x1a\x1e.helloworld.PasswordEnterReply\"\x00\x12h\n\x14PasswordConfirmation\x12\'.helloworld.PasswordConfirmationRequest\x1a%.helloworld.PasswordConfirmationReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
 )
 
 
@@ -166,10 +166,156 @@ _USERNAMEREQUEST = _descriptor.Descriptor(
   serialized_end=196,
 )
 
+
+_PASSWORDENTERREPLY = _descriptor.Descriptor(
+  name='PasswordEnterReply',
+  full_name='helloworld.PasswordEnterReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='helloworld.PasswordEnterReply.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='password', full_name='helloworld.PasswordEnterReply.password', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=198,
+  serialized_end=253,
+)
+
+
+_PASSWORDENTERREQUEST = _descriptor.Descriptor(
+  name='PasswordEnterRequest',
+  full_name='helloworld.PasswordEnterRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='password', full_name='helloworld.PasswordEnterRequest.password', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=255,
+  serialized_end=295,
+)
+
+
+_PASSWORDCONFIRMATIONREPLY = _descriptor.Descriptor(
+  name='PasswordConfirmationReply',
+  full_name='helloworld.PasswordConfirmationReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='helloworld.PasswordConfirmationReply.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='passwordConfirmed', full_name='helloworld.PasswordConfirmationReply.passwordConfirmed', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=297,
+  serialized_end=368,
+)
+
+
+_PASSWORDCONFIRMATIONREQUEST = _descriptor.Descriptor(
+  name='PasswordConfirmationRequest',
+  full_name='helloworld.PasswordConfirmationRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='passwordConfirmed', full_name='helloworld.PasswordConfirmationRequest.passwordConfirmed', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=370,
+  serialized_end=426,
+)
+
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
 DESCRIPTOR.message_types_by_name['UserNameReply'] = _USERNAMEREPLY
 DESCRIPTOR.message_types_by_name['UserNameRequest'] = _USERNAMEREQUEST
+DESCRIPTOR.message_types_by_name['PasswordEnterReply'] = _PASSWORDENTERREPLY
+DESCRIPTOR.message_types_by_name['PasswordEnterRequest'] = _PASSWORDENTERREQUEST
+DESCRIPTOR.message_types_by_name['PasswordConfirmationReply'] = _PASSWORDCONFIRMATIONREPLY
+DESCRIPTOR.message_types_by_name['PasswordConfirmationRequest'] = _PASSWORDCONFIRMATIONREQUEST
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
@@ -200,6 +346,34 @@ UserNameRequest = _reflection.GeneratedProtocolMessageType('UserNameRequest', (_
   })
 _sym_db.RegisterMessage(UserNameRequest)
 
+PasswordEnterReply = _reflection.GeneratedProtocolMessageType('PasswordEnterReply', (_message.Message,), {
+  'DESCRIPTOR' : _PASSWORDENTERREPLY,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.PasswordEnterReply)
+  })
+_sym_db.RegisterMessage(PasswordEnterReply)
+
+PasswordEnterRequest = _reflection.GeneratedProtocolMessageType('PasswordEnterRequest', (_message.Message,), {
+  'DESCRIPTOR' : _PASSWORDENTERREQUEST,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.PasswordEnterRequest)
+  })
+_sym_db.RegisterMessage(PasswordEnterRequest)
+
+PasswordConfirmationReply = _reflection.GeneratedProtocolMessageType('PasswordConfirmationReply', (_message.Message,), {
+  'DESCRIPTOR' : _PASSWORDCONFIRMATIONREPLY,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.PasswordConfirmationReply)
+  })
+_sym_db.RegisterMessage(PasswordConfirmationReply)
+
+PasswordConfirmationRequest = _reflection.GeneratedProtocolMessageType('PasswordConfirmationRequest', (_message.Message,), {
+  'DESCRIPTOR' : _PASSWORDCONFIRMATIONREQUEST,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.PasswordConfirmationRequest)
+  })
+_sym_db.RegisterMessage(PasswordConfirmationRequest)
+
 
 DESCRIPTOR._options = None
 
@@ -210,8 +384,8 @@ _GREETER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=199,
-  serialized_end=342,
+  serialized_start=429,
+  serialized_end=763,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
@@ -230,6 +404,26 @@ _GREETER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_USERNAMEREQUEST,
     output_type=_USERNAMEREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='PasswordEnter',
+    full_name='helloworld.Greeter.PasswordEnter',
+    index=2,
+    containing_service=None,
+    input_type=_PASSWORDENTERREQUEST,
+    output_type=_PASSWORDENTERREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='PasswordConfirmation',
+    full_name='helloworld.Greeter.PasswordConfirmation',
+    index=3,
+    containing_service=None,
+    input_type=_PASSWORDCONFIRMATIONREQUEST,
+    output_type=_PASSWORDCONFIRMATIONREPLY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

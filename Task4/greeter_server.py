@@ -32,6 +32,16 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
         print("Name received: " + request.userName)
         return taskFour_pb2.UserNameReply(message=request.userName)
 
+    def PasswordEnter(self, request, context):
+        print("Password received: " + request.password)
+        return taskFour_pb2.PasswordEnterReply(message=request.password)
+
+    def PasswordConfirmation(setl, request, context):
+        print("Password confirmation received: " + request.passwordConfirmed)
+        return taskFour_pb2.PasswordConfirmationReply(message=request.passwordConfirmed)
+
+
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))

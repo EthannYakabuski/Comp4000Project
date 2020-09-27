@@ -25,6 +25,16 @@ class GreeterStub(object):
                 request_serializer=taskFour__pb2.UserNameRequest.SerializeToString,
                 response_deserializer=taskFour__pb2.UserNameReply.FromString,
                 )
+        self.PasswordEnter = channel.unary_unary(
+                '/helloworld.Greeter/PasswordEnter',
+                request_serializer=taskFour__pb2.PasswordEnterRequest.SerializeToString,
+                response_deserializer=taskFour__pb2.PasswordEnterReply.FromString,
+                )
+        self.PasswordConfirmation = channel.unary_unary(
+                '/helloworld.Greeter/PasswordConfirmation',
+                request_serializer=taskFour__pb2.PasswordConfirmationRequest.SerializeToString,
+                response_deserializer=taskFour__pb2.PasswordConfirmationReply.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -45,6 +55,20 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def PasswordEnter(self, request, context):
+        """Ask for the password
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PasswordConfirmation(self, request, context):
+        """Ask for password confirmation
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -57,6 +81,16 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.UserName,
                     request_deserializer=taskFour__pb2.UserNameRequest.FromString,
                     response_serializer=taskFour__pb2.UserNameReply.SerializeToString,
+            ),
+            'PasswordEnter': grpc.unary_unary_rpc_method_handler(
+                    servicer.PasswordEnter,
+                    request_deserializer=taskFour__pb2.PasswordEnterRequest.FromString,
+                    response_serializer=taskFour__pb2.PasswordEnterReply.SerializeToString,
+            ),
+            'PasswordConfirmation': grpc.unary_unary_rpc_method_handler(
+                    servicer.PasswordConfirmation,
+                    request_deserializer=taskFour__pb2.PasswordConfirmationRequest.FromString,
+                    response_serializer=taskFour__pb2.PasswordConfirmationReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -100,5 +134,39 @@ class Greeter(object):
         return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/UserName',
             taskFour__pb2.UserNameRequest.SerializeToString,
             taskFour__pb2.UserNameReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PasswordEnter(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/PasswordEnter',
+            taskFour__pb2.PasswordEnterRequest.SerializeToString,
+            taskFour__pb2.PasswordEnterReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PasswordConfirmation(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/PasswordConfirmation',
+            taskFour__pb2.PasswordConfirmationRequest.SerializeToString,
+            taskFour__pb2.PasswordConfirmationReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

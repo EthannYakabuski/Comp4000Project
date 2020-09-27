@@ -30,8 +30,28 @@ def run():
         stub = taskFour_pb2_grpc.GreeterStub(channel)
         response = stub.SayHello(taskFour_pb2.HelloRequest(name='Task Four'))
         print('Greeter client received: ' + response.message)
-        inputUserName = input("Enter your username: ");
+        inputUserName = input("Enter your username: ")
         response = stub.UserName(taskFour_pb2.UserNameRequest(userName=inputUserName))
+        inputUserPass = input("Enter your password: ")
+        response = stub.PasswordEnter(taskFour_pb2.PasswordEnterRequest(password=inputUserPass))
+        inputUserPassConfirmation = input("Confirm your password: ")
+        response = stub.PasswordConfirmation(taskFour_pb2.PasswordConfirmationRequest(passwordConfirmed=inputUserPassConfirmation))
+        if samePass(inputUserPass,inputUserPassConfirmation) :
+            print("sending login information to server -")
+            
+            #send login information to server and check if the account exists or not
+            #create the account if it does not exist
+
+
+
+def samePass(pass1, pass2):
+    if pass1 == pass2 :
+        print("passwords match")
+        return (pass1 == pass2)
+    else :
+        print("passwords do not match")
+        return (pass1 == pass2)
+
 
 
 

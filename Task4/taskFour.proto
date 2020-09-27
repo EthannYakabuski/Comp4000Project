@@ -28,6 +28,16 @@ service Greeter {
   
   // Ask for the user name
   rpc UserName (UserNameRequest) returns (UserNameReply) {}    
+
+  // Ask for the password
+  rpc PasswordEnter (PasswordEnterRequest) returns (PasswordEnterReply) {}
+
+ 
+  // Ask for password confirmation
+  rpc PasswordConfirmation (PasswordConfirmationRequest) returns (PasswordConfirmationReply) {}
+
+
+
  
 }
 
@@ -52,4 +62,30 @@ message UserNameReply {
 message UserNameRequest {
   string userName = 1; 
 }
+
+
+// The response containing the password of the client
+message PasswordEnterReply {
+  string message = 1; 
+  string password = 2; 
+}
+
+// The request message, asking for the users password
+message PasswordEnterRequest {
+  string password = 1; 
+}
+
+
+// The response containing the confirmed password of the client
+message PasswordConfirmationReply {
+  string message = 1; 
+  string passwordConfirmed = 2; 
+}
+
+
+// The request message, asking for the user to confirm the previously entered password
+message PasswordConfirmationRequest {
+  string passwordConfirmed = 1; 
+}
+
 
