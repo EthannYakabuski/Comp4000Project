@@ -43,8 +43,13 @@ def run():
             response = stub.LoginAttempt(taskFour_pb2.LoginAttemptRequest(loginAttempt=loginAttemptJSON))
             print(response.Result)
             token = response.authenticationToken
+            print("This was the token received from the server: " + token)
+            print("Welcome to the ZDJE team client - (1) Update pass - (2) Delete acc")
+            userChoice = input("Enter your choice: ")
         else :
             print("the two passwords you entered weren't the same")
+        
+
 
 
 def samePass(pass1, pass2):

@@ -95,7 +95,7 @@ message LoginAttemptReply {
   string message = 1; 
   string loginAttempt = 2; 
   string Result = 3; 
-  int64 authenticationToken = 4; 
+  string authenticationToken = 4; 
 }
 
 

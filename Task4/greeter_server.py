@@ -25,7 +25,8 @@ import taskFour_pb2_grpc
 import bcrypt
 import random
 import datetime
-
+import string
+#unique usernames assumed
 #stores the login information for users and their hashed passwords in JSON
 loginStorageDict = {} 
 #not actually needed
@@ -79,17 +80,22 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
                 print("Matching passwords")
                 returnResult = "Logged in successfully"
                 #login successful code here
-                token = random.getrandbits(64)
+                #https://stackoverflow.com/a/23728630/2213647
+                #this is cryptographically secure
+                token = "".join(random.SystemRandom().choice(string.digits) for _ in range(64))
                 print(token)
                 #now store this token in conjunction with the username
                 authenticationTokens[usernameAttempted] = token
                 #store when this token is no longer valid, in conjunction with the token itself
                 #arbitrary expiration time of 2022, we can update this later
+                #a new token is generated for this username everytime this person logs in
+                #in this way, on a valid login request the server is "updating"
+                #the expiration time of the token
                 authenticationTokenTimeOuts[token] = datetime.datetime(2022,1,1)
             else :
                 print("Passwords did not match")
                 returnResult = "Password did not match the one stored on server"
-                token = 0
+                token = "bad token"
         else :
             print("This username is new - move onto account creation")
             salt = bcrypt.gensalt()
@@ -98,7 +104,11 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
             saltStorageDict[usernameAttempted] = salt
             loginStorageDict[usernameAttempted] = hashedPassword
             returnResult = "New account created"
-            token = 1
+            #the user should be given an authentication token on their first login (when they make the account)
+            #this is incase they want to change pass/delete account while still on their first login
+            token = "".join(random.SystemRandom().choice(string.digits) for _ in range(64))
+            authenticationTokens[usernameAttempted] = token
+            authenticationTokenTimeOuts[token] = datetime.datetime(2022,1,1)
             print("current logins are:", loginStorageDict)
         #print("Username attempted: " + usernameAttempted) 
         #print("Password attempted: " + passwordAttempted)
