@@ -23,9 +23,17 @@ import taskFour_pb2_grpc
 
 
 import bcrypt
+import random
+import datetime
 
+#stores the login information for users and their hashed passwords in JSON
 loginStorageDict = {} 
+#not actually needed
 saltStorageDict = {}
+#stores the authentication tokens with usernames as keys
+authenticationTokens = {}
+#stores time out dates, with authentication tokens as keys (assuming unique 64 bit strings for each user)
+authenticationTokenTimeOuts = {}; 
 
 #https://linuxhint.com/parse_json_python/
 #I had never done this in python before, but it doesn't seem
@@ -71,9 +79,17 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
                 print("Matching passwords")
                 returnResult = "Logged in successfully"
                 #login successful code here
+                token = random.getrandbits(64)
+                print(token)
+                #now store this token in conjunction with the username
+                authenticationTokens[usernameAttempted] = token
+                #store when this token is no longer valid, in conjunction with the token itself
+                #arbitrary expiration time of 2022, we can update this later
+                authenticationTokenTimeOuts[token] = datetime.datetime(2022,1,1)
             else :
                 print("Passwords did not match")
                 returnResult = "Password did not match the one stored on server"
+                token = 0
         else :
             print("This username is new - move onto account creation")
             salt = bcrypt.gensalt()
@@ -82,10 +98,11 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
             saltStorageDict[usernameAttempted] = salt
             loginStorageDict[usernameAttempted] = hashedPassword
             returnResult = "New account created"
+            token = 1
             print("current logins are:", loginStorageDict)
         #print("Username attempted: " + usernameAttempted) 
         #print("Password attempted: " + passwordAttempted)
-        return taskFour_pb2.LoginAttemptReply(message=request.loginAttempt,Result=returnResult)
+        return taskFour_pb2.LoginAttemptReply(message=request.loginAttempt,Result=returnResult,authenticationToken=token)
 
 
 

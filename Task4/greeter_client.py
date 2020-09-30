@@ -21,6 +21,7 @@ import grpc
 import taskFour_pb2
 import taskFour_pb2_grpc
 
+token = 0
 
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
@@ -41,6 +42,7 @@ def run():
             loginAttemptJSON = json.dumps({"username":inputUserName,"password":inputUserPass})
             response = stub.LoginAttempt(taskFour_pb2.LoginAttemptRequest(loginAttempt=loginAttemptJSON))
             print(response.Result)
+            token = response.authenticationToken
         else :
             print("the two passwords you entered weren't the same")
 
