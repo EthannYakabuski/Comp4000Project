@@ -64,6 +64,39 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
         print("Password confirmation received: " + request.passwordConfirmed)
         return taskFour_pb2.PasswordConfirmationReply(message=request.passwordConfirmed)
 
+    def AuthenticateRequest(self, request, context):
+        print("Authenticated request attempt received")
+        print("Token received: " + request.tokenToVerify) 
+        print("Choice received: " + request.choice)
+        if request.choice == "1": 
+            print("User wishes to update their password to: " + request.newPassword)
+            #if the stored token, associated with the user name given, is equal to the token given
+            if authenticationTokens.get(request.confirmedUserName) == request.tokenToVerify :
+                print("Token matches the given username")
+                #need to hash the new password and store that along with the confirmed username
+                salt = bcrypt.gensalt()
+                hashedNewPass = bcrypt.hashpw(request.newPassword.encode('utf8'),salt)
+                saltStorageDict[request.confirmedUserName] = salt
+                loginStorageDict[request.confirmedUserName] = hashedNewPass
+                returnString = "Password update successfully " + request.confirmedUserName 
+            else :
+                print("Token does not match the given username")
+                returnString = "You token does not match the given username"
+
+        elif request.choice == "2":
+            print("User wished to delete their account")
+            #first need to verify the token that the user is sending to us
+            if authenticationTokens.get(request.confirmedUserName) == request.tokenToVerify :
+                #remove the user name and hashed password entry in the dict
+                loginStorageDict.pop(request.confirmedUserName)
+                authenticationTokens.pop(request.confirmedUserName)
+                returnString = "Your account was deleted " + request.confirmedUserName + " we are sad to see you go!" 
+            else :
+                print("Token does not mach the given username")
+                returnString = "Your token does not match the given username"
+        return taskFour_pb2.AuthenticateRequestReply(replyMessage=returnString)
+
+
     def LoginAttempt(self, request, context):
         print("Attempting a login: " + request.loginAttempt)
         #loginAttemptJSON = json.loads(request.loginAttempt)
@@ -78,7 +111,7 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
             saltStored = saltStorageDict[usernameAttempted]
             if bcrypt.checkpw(passwordAttempted.encode('utf8'),loginStorageDict[usernameAttempted]) :
                 print("Matching passwords")
-                returnResult = "Logged in successfully"
+                returnResult = "Success"
                 #login successful code here
                 #https://stackoverflow.com/a/23728630/2213647
                 #this is cryptographically secure
@@ -103,10 +136,11 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
             #this creates a key,value pair in our loginStorageDictionary as : (usernameAttempted,hash(passwordAttempted))
             saltStorageDict[usernameAttempted] = salt
             loginStorageDict[usernameAttempted] = hashedPassword
-            returnResult = "New account created"
+            returnResult = "Success"
             #the user should be given an authentication token on their first login (when they make the account)
             #this is incase they want to change pass/delete account while still on their first login
             token = "".join(random.SystemRandom().choice(string.digits) for _ in range(64))
+            print(token)
             authenticationTokens[usernameAttempted] = token
             authenticationTokenTimeOuts[token] = datetime.datetime(2022,1,1)
             print("current logins are:", loginStorageDict)

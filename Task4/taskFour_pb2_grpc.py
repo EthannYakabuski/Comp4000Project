@@ -40,6 +40,11 @@ class GreeterStub(object):
                 request_serializer=taskFour__pb2.LoginAttemptRequest.SerializeToString,
                 response_deserializer=taskFour__pb2.LoginAttemptReply.FromString,
                 )
+        self.AuthenticateRequest = channel.unary_unary(
+                '/helloworld.Greeter/AuthenticateRequest',
+                request_serializer=taskFour__pb2.AuthenticateRequestRequest.SerializeToString,
+                response_deserializer=taskFour__pb2.AuthenticateRequestReply.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -81,6 +86,12 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def AuthenticateRequest(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -108,6 +119,11 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.LoginAttempt,
                     request_deserializer=taskFour__pb2.LoginAttemptRequest.FromString,
                     response_serializer=taskFour__pb2.LoginAttemptReply.SerializeToString,
+            ),
+            'AuthenticateRequest': grpc.unary_unary_rpc_method_handler(
+                    servicer.AuthenticateRequest,
+                    request_deserializer=taskFour__pb2.AuthenticateRequestRequest.FromString,
+                    response_serializer=taskFour__pb2.AuthenticateRequestReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -202,5 +218,22 @@ class Greeter(object):
         return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/LoginAttempt',
             taskFour__pb2.LoginAttemptRequest.SerializeToString,
             taskFour__pb2.LoginAttemptReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def AuthenticateRequest(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/AuthenticateRequest',
+            taskFour__pb2.AuthenticateRequestRequest.SerializeToString,
+            taskFour__pb2.AuthenticateRequestReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

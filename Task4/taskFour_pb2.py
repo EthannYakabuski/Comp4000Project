@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"2\n\rUserNameReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\"#\n\x0fUserNameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"7\n\x12PasswordEnterReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"(\n\x14PasswordEnterRequest\x12\x10\n\x08password\x18\x01 \x01(\t\"G\n\x19PasswordConfirmationReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x19\n\x11passwordConfirmed\x18\x02 \x01(\t\"8\n\x1bPasswordConfirmationRequest\x12\x19\n\x11passwordConfirmed\x18\x01 \x01(\t\"g\n\x11LoginAttemptReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x14\n\x0cloginAttempt\x18\x02 \x01(\t\x12\x0e\n\x06Result\x18\x03 \x01(\t\x12\x1b\n\x13\x61uthenticationToken\x18\x04 \x01(\t\"+\n\x13LoginAttemptRequest\x12\x14\n\x0cloginAttempt\x18\x01 \x01(\t2\xa0\x03\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x44\n\x08UserName\x12\x1b.helloworld.UserNameRequest\x1a\x19.helloworld.UserNameReply\"\x00\x12S\n\rPasswordEnter\x12 .helloworld.PasswordEnterRequest\x1a\x1e.helloworld.PasswordEnterReply\"\x00\x12h\n\x14PasswordConfirmation\x12\'.helloworld.PasswordConfirmationRequest\x1a%.helloworld.PasswordConfirmationReply\"\x00\x12P\n\x0cLoginAttempt\x12\x1f.helloworld.LoginAttemptRequest\x1a\x1d.helloworld.LoginAttemptReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
+  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"2\n\rUserNameReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\"#\n\x0fUserNameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"7\n\x12PasswordEnterReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"(\n\x14PasswordEnterRequest\x12\x10\n\x08password\x18\x01 \x01(\t\"G\n\x19PasswordConfirmationReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x19\n\x11passwordConfirmed\x18\x02 \x01(\t\"8\n\x1bPasswordConfirmationRequest\x12\x19\n\x11passwordConfirmed\x18\x01 \x01(\t\"g\n\x11LoginAttemptReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x14\n\x0cloginAttempt\x18\x02 \x01(\t\x12\x0e\n\x06Result\x18\x03 \x01(\t\x12\x1b\n\x13\x61uthenticationToken\x18\x04 \x01(\t\"+\n\x13LoginAttemptRequest\x12\x14\n\x0cloginAttempt\x18\x01 \x01(\t\"s\n\x1a\x41uthenticateRequestRequest\x12\x15\n\rtokenToVerify\x18\x01 \x01(\t\x12\x0e\n\x06\x63hoice\x18\x02 \x01(\t\x12\x13\n\x0bnewPassword\x18\x03 \x01(\t\x12\x19\n\x11\x63onfirmedUserName\x18\x04 \x01(\t\"^\n\x18\x41uthenticateRequestReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x1b\n\x13\x61uthenticateRequest\x18\x02 \x01(\t\x12\x14\n\x0creplyMessage\x18\x03 \x01(\t2\x87\x04\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x44\n\x08UserName\x12\x1b.helloworld.UserNameRequest\x1a\x19.helloworld.UserNameReply\"\x00\x12S\n\rPasswordEnter\x12 .helloworld.PasswordEnterRequest\x1a\x1e.helloworld.PasswordEnterReply\"\x00\x12h\n\x14PasswordConfirmation\x12\'.helloworld.PasswordConfirmationRequest\x1a%.helloworld.PasswordConfirmationReply\"\x00\x12P\n\x0cLoginAttempt\x12\x1f.helloworld.LoginAttemptRequest\x1a\x1d.helloworld.LoginAttemptReply\"\x00\x12\x65\n\x13\x41uthenticateRequest\x12&.helloworld.AuthenticateRequestRequest\x1a$.helloworld.AuthenticateRequestReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
 )
 
 
@@ -393,6 +393,105 @@ _LOGINATTEMPTREQUEST = _descriptor.Descriptor(
   serialized_end=576,
 )
 
+
+_AUTHENTICATEREQUESTREQUEST = _descriptor.Descriptor(
+  name='AuthenticateRequestRequest',
+  full_name='helloworld.AuthenticateRequestRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='tokenToVerify', full_name='helloworld.AuthenticateRequestRequest.tokenToVerify', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='choice', full_name='helloworld.AuthenticateRequestRequest.choice', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='newPassword', full_name='helloworld.AuthenticateRequestRequest.newPassword', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='confirmedUserName', full_name='helloworld.AuthenticateRequestRequest.confirmedUserName', index=3,
+      number=4, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=578,
+  serialized_end=693,
+)
+
+
+_AUTHENTICATEREQUESTREPLY = _descriptor.Descriptor(
+  name='AuthenticateRequestReply',
+  full_name='helloworld.AuthenticateRequestReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='helloworld.AuthenticateRequestReply.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='authenticateRequest', full_name='helloworld.AuthenticateRequestReply.authenticateRequest', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='replyMessage', full_name='helloworld.AuthenticateRequestReply.replyMessage', index=2,
+      number=3, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=695,
+  serialized_end=789,
+)
+
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
 DESCRIPTOR.message_types_by_name['UserNameReply'] = _USERNAMEREPLY
@@ -403,6 +502,8 @@ DESCRIPTOR.message_types_by_name['PasswordConfirmationReply'] = _PASSWORDCONFIRM
 DESCRIPTOR.message_types_by_name['PasswordConfirmationRequest'] = _PASSWORDCONFIRMATIONREQUEST
 DESCRIPTOR.message_types_by_name['LoginAttemptReply'] = _LOGINATTEMPTREPLY
 DESCRIPTOR.message_types_by_name['LoginAttemptRequest'] = _LOGINATTEMPTREQUEST
+DESCRIPTOR.message_types_by_name['AuthenticateRequestRequest'] = _AUTHENTICATEREQUESTREQUEST
+DESCRIPTOR.message_types_by_name['AuthenticateRequestReply'] = _AUTHENTICATEREQUESTREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
@@ -475,6 +576,20 @@ LoginAttemptRequest = _reflection.GeneratedProtocolMessageType('LoginAttemptRequ
   })
 _sym_db.RegisterMessage(LoginAttemptRequest)
 
+AuthenticateRequestRequest = _reflection.GeneratedProtocolMessageType('AuthenticateRequestRequest', (_message.Message,), {
+  'DESCRIPTOR' : _AUTHENTICATEREQUESTREQUEST,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.AuthenticateRequestRequest)
+  })
+_sym_db.RegisterMessage(AuthenticateRequestRequest)
+
+AuthenticateRequestReply = _reflection.GeneratedProtocolMessageType('AuthenticateRequestReply', (_message.Message,), {
+  'DESCRIPTOR' : _AUTHENTICATEREQUESTREPLY,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.AuthenticateRequestReply)
+  })
+_sym_db.RegisterMessage(AuthenticateRequestReply)
+
 
 DESCRIPTOR._options = None
 
@@ -485,8 +600,8 @@ _GREETER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=579,
-  serialized_end=995,
+  serialized_start=792,
+  serialized_end=1311,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
@@ -535,6 +650,16 @@ _GREETER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_LOGINATTEMPTREQUEST,
     output_type=_LOGINATTEMPTREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='AuthenticateRequest',
+    full_name='helloworld.Greeter.AuthenticateRequest',
+    index=5,
+    containing_service=None,
+    input_type=_AUTHENTICATEREQUESTREQUEST,
+    output_type=_AUTHENTICATEREQUESTREPLY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

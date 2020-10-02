@@ -43,24 +43,19 @@ def run():
             response = stub.LoginAttempt(taskFour_pb2.LoginAttemptRequest(loginAttempt=loginAttemptJSON))
             print(response.Result)
             token = response.authenticationToken
-            if response.Result == "Success" :
-                print("This was the token received from the server: " + token)
-                print("Welcome to the ZDJE team client - (1) Update pass - (2) Delete acc")
-                userChoice = input("Enter your choice: ")
-                print(userChoice)
-                if userChoice == "1" :
-                    print("user wishes to change their password")
-                    changedPassword = input("Enter your new password: ")
-                    confirmUsername = input("Confirm your username: ")
-                    response = stub.AuthenticateRequest(taskFour_pb2.AuthenticateRequestRequest(tokenToVerify=token,choice=userChoice,newPassword=changedPassword,confirmedUserName=confirmUsername))
-                    print(response.replyMessage)
-                elif userChoice == "2" :
-                    print("user wishes to delete their account")
-                    confirmUsername = input("Confirm your username: ")
-                    response = stub.AuthenticateRequest(taskFour_pb2.AuthenticateRequestRequest(tokenToVerify=token,choice=userChoice,confirmedUserName=confirmUsername))
-                    print(response.replyMessage)
-            else :
-                print("the two passwords you entered weren't the same")
+            print("This was the token received from the server: " + token)
+            print("Welcome to the ZDJE team client - (1) Update pass - (2) Delete acc")
+            userChoice = input("Enter your choice: ")
+            print(userChoice)
+            if userChoice == "1" :
+                print("user wishes to change their password")
+                changedPassword = input("Enter your new password: ")
+                confirmUsername = input("Confirm your username: ")
+                response = stub.AuthenticateRequest(taskFour_pb2.AuthenticateRequestRequest(tokenToVerify=token,choice=userChoice,newPassword=changedPassword,confirmedUserName=confirmUsername))
+        else :
+            print("the two passwords you entered weren't the same")
+        
+
 
 
 def samePass(pass1, pass2):

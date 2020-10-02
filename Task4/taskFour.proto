@@ -39,6 +39,9 @@ service Greeter {
 
   // Login attempt after password has been confirmed
   rpc LoginAttempt (LoginAttemptRequest) returns (LoginAttemptReply) {}
+
+
+  rpc AuthenticateRequest (AuthenticateRequestRequest) returns (AuthenticateRequestReply) {}
  
 }
 
@@ -104,4 +107,16 @@ message LoginAttemptRequest {
   string loginAttempt = 1;
 }
 
+// The request message
+message AuthenticateRequestRequest { 
+  string tokenToVerify = 1; 
+  string choice = 2;
+  string newPassword = 3;
+  string confirmedUserName = 4;  
+}
 
+message AuthenticateRequestReply {
+  string message = 1; 
+  string authenticateRequest = 2;
+  string replyMessage = 3; 
+}
