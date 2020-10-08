@@ -43,4 +43,4 @@ After making the changes to those two files run commands similar to Task #2 to s
 Task #4 
 For task four navigate to the appropriate folder. The command to use the stub. proto file is as follows: 
 
-python -m grcp_tools.protoc -I ~/...../Task4 --python_out=. --grpc_python_out=. ~/..../Task4/taskFour.proto
+python -m grpc_tools.protoc -I ~/...../Task4 --python_out=. --grpc_python_out=. ~/..../Task4/taskFour.proto
