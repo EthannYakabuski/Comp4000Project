@@ -15,22 +15,31 @@
 
 from concurrent import futures
 import logging
-import json
+import simplejson as json
 import grpc
+import bson
+import collections
 
 import taskFour_pb2
 import taskFour_pb2_grpc
 
-
+import _pickle as pickle
 import bcrypt
 import random
 import datetime
 import string
 #unique usernames assumed
 #stores the login information for users and their hashed passwords in JSON
-loginStorageDict = {} 
-#not actually needed
-saltStorageDict = {}
+
+loginStorageDict = {}
+with open('data.json') as json_file:
+    loginStorageDict = json.load(json_file)
+
+#with open('salt.json') as json_file: 
+    #saltStorageDict = json.load(json_file)
+
+
+#saltStorageDict = {}
 #stores the authentication tokens with usernames as keys
 authenticationTokens = {}
 #stores time out dates, with authentication tokens as keys (assuming unique 64 bit strings for each user)
@@ -44,6 +53,28 @@ authenticationTokenTimeOuts = {};
 class read_data(object):
     def __init__(self,jsonData):
         self.__dict__ = json.loads(jsonData)
+#not actually used
+def readAndDestroy():
+    with open('data.json') as json_file: 
+        data = json.load(json_file)
+    with open('data.json', 'w', encoding='utf-8') as json_file: 
+        json.dump(data,json_file)
+
+#this function removes the contents of the file, and replaces it with the contents of the loginStorageDict
+#the reason for doing this is to ensure correctness of data format, no issue as number of users will be small
+def writeToFile():
+    rm = open('data.json', 'r+')
+    rm.truncate(0)
+    rm.close()
+    with open('data.json', 'w', encoding='utf-8') as f: 
+        json.dump(loginStorageDict, f)
+
+#not actually used
+def loadFile(): 
+    with open('data.json') as json_file: 
+        data = json.load(json_file)
+        for (u,p) in data.items():
+            loginStorageDict[u] = p
 
 
 class Greeter(taskFour_pb2_grpc.GreeterServicer):
@@ -76,12 +107,14 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
                 #need to hash the new password and store that along with the confirmed username
                 salt = bcrypt.gensalt()
                 hashedNewPass = bcrypt.hashpw(request.newPassword.encode('utf8'),salt)
-                saltStorageDict[request.confirmedUserName] = salt
+                #saltStorageDict[request.confirmedUserName] = salt
                 loginStorageDict[request.confirmedUserName] = hashedNewPass
-                returnString = "Password update successfully " + request.confirmedUserName 
+                returnString = "Password update successfully " + request.confirmedUserName
+                writeToFile()
             else :
                 print("Token does not match the given username")
                 returnString = "You token does not match the given username"
+                #readAndDestroy()
 
         elif request.choice == "2":
             print("User wished to delete their account")
@@ -90,7 +123,8 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
                 #remove the user name and hashed password entry in the dict
                 loginStorageDict.pop(request.confirmedUserName)
                 authenticationTokens.pop(request.confirmedUserName)
-                returnString = "Your account was deleted " + request.confirmedUserName + " we are sad to see you go!" 
+                returnString = "Your account was deleted " + request.confirmedUserName + " we are sad to see you go!"
+                writeToFile()
             else :
                 print("Token does not mach the given username")
                 returnString = "Your token does not match the given username"
@@ -100,6 +134,7 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
     def LoginAttempt(self, request, context):
         print("Attempting a login: " + request.loginAttempt)
         #loginAttemptJSON = json.loads(request.loginAttempt)
+        #loadFile()
         #for x in loginAttemptJSON:
            # print("%s: %s" % (x, loginAttemptJSON[x]))
         dataReader = read_data(request.loginAttempt)
@@ -108,8 +143,16 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
         if usernameAttempted in loginStorageDict:
             print("This username already exists - move onto password verification")
             #recover the same salt that was used to store the password
-            saltStored = saltStorageDict[usernameAttempted]
-            if bcrypt.checkpw(passwordAttempted.encode('utf8'),loginStorageDict[usernameAttempted]) :
+            #saltStored = saltStorageDict[usernameAttempted]
+            #hashedPasswordAttempted = bcrypt.hashpw(passwordAttempted.encode('utf8'),saltStored.decode('utf8'))
+            try: 
+                loginStorageDict[usernameAttempted].encode('utf8')
+                secondArg = loginStorageDict[usernameAttempted].encode('utf8')
+            except (UnicodeDecodeError, AttributeError):
+                secondArg = loginStorageDict[usernameAttempted]
+
+            if bcrypt.checkpw(passwordAttempted.encode('utf8'),secondArg):
+                #if (str(hashedPasswordAttempted) == loginStorageDict[usernameAttempted]):
                 print("Matching passwords")
                 returnResult = "Success"
                 #login successful code here
@@ -134,8 +177,14 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
             salt = bcrypt.gensalt()
             hashedPassword = bcrypt.hashpw(passwordAttempted.encode('utf8'),salt)
             #this creates a key,value pair in our loginStorageDictionary as : (usernameAttempted,hash(passwordAttempted))
-            saltStorageDict[usernameAttempted] = salt
+            #saltStorageDict[usernameAttempted] = salt
             loginStorageDict[usernameAttempted] = hashedPassword
+            #newAccount={usernameAttempted: hashedPassword.decode('utf-8')}
+            #newSalt={usernameAttempted: str(salt)}
+            #with open('salt.json') as json_file: 
+                #data=json.load(json_file)
+            #data.update(newSalt)
+            writeToFile()
             returnResult = "Success"
             #the user should be given an authentication token on their first login (when they make the account)
             #this is incase they want to change pass/delete account while still on their first login
@@ -163,8 +212,6 @@ def serve():
 if __name__ == '__main__':
     logging.basicConfig()
     serve()
-
-
 
 
 

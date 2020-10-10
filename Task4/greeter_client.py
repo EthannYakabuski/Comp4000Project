@@ -11,7 +11,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-"The Python implementation of the GRPC helloworld.Greeter client."
+"""The Python implementation of the GRPC helloworld.Greeter client."""
 
 from __future__ import print_function
 import logging
@@ -20,11 +20,9 @@ import grpc
 
 import taskFour_pb2
 import taskFour_pb2_grpc
-
-token = 0
 inputUserName = ""
 
-
+token = 0
 
 def run():
     # NOTE(gRPC Python Team): .close() is possible on a channel and should be
@@ -34,11 +32,11 @@ def run():
         stub = taskFour_pb2_grpc.GreeterStub(channel)
         response = stub.SayHello(taskFour_pb2.HelloRequest(name='Task Four'))
         print('Greeter client received: ' + response.message)
-        inputUserName = raw_input("Enter your username: ")
+        inputUserName = input("Enter your username: ")
         response = stub.UserName(taskFour_pb2.UserNameRequest(userName=inputUserName))
-        inputUserPass = raw_input("Enter your password: ")
+        inputUserPass = input("Enter your password: ")
         response = stub.PasswordEnter(taskFour_pb2.PasswordEnterRequest(password=inputUserPass))
-        inputUserPassConfirmation = raw_input("Confirm your password: ")
+        inputUserPassConfirmation = input("Confirm your password: ")
         response = stub.PasswordConfirmation(taskFour_pb2.PasswordConfirmationRequest(passwordConfirmed=inputUserPassConfirmation))
         if samePass(inputUserPass,inputUserPassConfirmation) :
             print("sending login information to server -")
@@ -49,17 +47,17 @@ def run():
             if response.Result == "Success" :
                 print("This was the token received from the server: " + token)
                 print("Welcome to the ZDJE team client - (1) Update pass - (2) Delete acc")
-                userChoice = raw_input("Enter your choice: ")
+                userChoice = input("Enter your choice: ")
                 print(userChoice)
                 if userChoice == "1" :
                     print("user wishes to change their password")
-                    changedPassword = raw_input("Enter your new password: ")
-                    confirmUsername = raw_input("Confirm your username: ")
+                    changedPassword = input("Enter your new password: ")
+                    confirmUsername = input("Confirm your username: ")
                     response = stub.AuthenticateRequest(taskFour_pb2.AuthenticateRequestRequest(tokenToVerify=token,choice=userChoice,newPassword=changedPassword,confirmedUserName=confirmUsername))
                     print(response.replyMessage)
                 elif userChoice == "2" :
                     print("user wishes to delete their account")
-                    confirmUsername = raw_input("Confirm your username: ")
+                    confirmUsername = input("Confirm your username: ")
                     response = stub.AuthenticateRequest(taskFour_pb2.AuthenticateRequestRequest(tokenToVerify=token,choice=userChoice,confirmedUserName=confirmUsername))
                     print(response.replyMessage)
             else :
