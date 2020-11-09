@@ -28,6 +28,13 @@ import bcrypt
 import random
 import datetime
 import string
+
+import os
+import sys
+import errno
+
+
+
 #unique usernames assumed
 #stores the login information for users and their hashed passwords in JSON
 
@@ -81,6 +88,12 @@ class Greeter(taskFour_pb2_grpc.GreeterServicer):
 
     def SayHello(self, request, context):
         return taskFour_pb2.HelloReply(message='Hello, %s!' % request.name)
+
+    def _full_path(self, partial):
+        if partial.startswith("/"):
+            partial = partial[1:]
+        path = os.path.join(self.root, partial)
+        return path
 
 
     def UserName(self, request, context):

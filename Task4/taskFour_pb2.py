@@ -19,10 +19,81 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   syntax='proto3',
   serialized_options=b'\n\033io.grpc.examples.helloworldB\017HelloWorldProtoP\001\242\002\003HLW',
   create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"2\n\rUserNameReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\"#\n\x0fUserNameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"7\n\x12PasswordEnterReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"(\n\x14PasswordEnterRequest\x12\x10\n\x08password\x18\x01 \x01(\t\"G\n\x19PasswordConfirmationReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x19\n\x11passwordConfirmed\x18\x02 \x01(\t\"8\n\x1bPasswordConfirmationRequest\x12\x19\n\x11passwordConfirmed\x18\x01 \x01(\t\"g\n\x11LoginAttemptReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x14\n\x0cloginAttempt\x18\x02 \x01(\t\x12\x0e\n\x06Result\x18\x03 \x01(\t\x12\x1b\n\x13\x61uthenticationToken\x18\x04 \x01(\t\"+\n\x13LoginAttemptRequest\x12\x14\n\x0cloginAttempt\x18\x01 \x01(\t\"s\n\x1a\x41uthenticateRequestRequest\x12\x15\n\rtokenToVerify\x18\x01 \x01(\t\x12\x0e\n\x06\x63hoice\x18\x02 \x01(\t\x12\x13\n\x0bnewPassword\x18\x03 \x01(\t\x12\x19\n\x11\x63onfirmedUserName\x18\x04 \x01(\t\"^\n\x18\x41uthenticateRequestReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x1b\n\x13\x61uthenticateRequest\x18\x02 \x01(\t\x12\x14\n\x0creplyMessage\x18\x03 \x01(\t2\x87\x04\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x44\n\x08UserName\x12\x1b.helloworld.UserNameRequest\x1a\x19.helloworld.UserNameReply\"\x00\x12S\n\rPasswordEnter\x12 .helloworld.PasswordEnterRequest\x1a\x1e.helloworld.PasswordEnterReply\"\x00\x12h\n\x14PasswordConfirmation\x12\'.helloworld.PasswordConfirmationRequest\x1a%.helloworld.PasswordConfirmationReply\"\x00\x12P\n\x0cLoginAttempt\x12\x1f.helloworld.LoginAttemptRequest\x1a\x1d.helloworld.LoginAttemptReply\"\x00\x12\x65\n\x13\x41uthenticateRequest\x12&.helloworld.AuthenticateRequestRequest\x1a$.helloworld.AuthenticateRequestReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
+  serialized_pb=b'\n\x0etaskFour.proto\x12\nhelloworld\"0\n\x0f\x46ullPathRequest\x12\x0c\n\x04self\x18\x01 \x01(\t\x12\x0f\n\x07partial\x18\x02 \x01(\t\"\x1d\n\rFullPathReply\x12\x0c\n\x04path\x18\x01 \x01(\t\".\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x10\n\x08\x61rgument\x18\x02 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t\"2\n\rUserNameReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08userName\x18\x02 \x01(\t\"#\n\x0fUserNameRequest\x12\x10\n\x08userName\x18\x01 \x01(\t\"7\n\x12PasswordEnterReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"(\n\x14PasswordEnterRequest\x12\x10\n\x08password\x18\x01 \x01(\t\"G\n\x19PasswordConfirmationReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x19\n\x11passwordConfirmed\x18\x02 \x01(\t\"8\n\x1bPasswordConfirmationRequest\x12\x19\n\x11passwordConfirmed\x18\x01 \x01(\t\"g\n\x11LoginAttemptReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x14\n\x0cloginAttempt\x18\x02 \x01(\t\x12\x0e\n\x06Result\x18\x03 \x01(\t\x12\x1b\n\x13\x61uthenticationToken\x18\x04 \x01(\t\"+\n\x13LoginAttemptRequest\x12\x14\n\x0cloginAttempt\x18\x01 \x01(\t\"s\n\x1a\x41uthenticateRequestRequest\x12\x15\n\rtokenToVerify\x18\x01 \x01(\t\x12\x0e\n\x06\x63hoice\x18\x02 \x01(\t\x12\x13\n\x0bnewPassword\x18\x03 \x01(\t\x12\x19\n\x11\x63onfirmedUserName\x18\x04 \x01(\t\"^\n\x18\x41uthenticateRequestReply\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x1b\n\x13\x61uthenticateRequest\x18\x02 \x01(\t\x12\x14\n\x0creplyMessage\x18\x03 \x01(\t2\xcf\x04\n\x07Greeter\x12>\n\x08SayHello\x12\x18.helloworld.HelloRequest\x1a\x16.helloworld.HelloReply\"\x00\x12\x44\n\x08UserName\x12\x1b.helloworld.UserNameRequest\x1a\x19.helloworld.UserNameReply\"\x00\x12S\n\rPasswordEnter\x12 .helloworld.PasswordEnterRequest\x1a\x1e.helloworld.PasswordEnterReply\"\x00\x12h\n\x14PasswordConfirmation\x12\'.helloworld.PasswordConfirmationRequest\x1a%.helloworld.PasswordConfirmationReply\"\x00\x12P\n\x0cLoginAttempt\x12\x1f.helloworld.LoginAttemptRequest\x1a\x1d.helloworld.LoginAttemptReply\"\x00\x12\x65\n\x13\x41uthenticateRequest\x12&.helloworld.AuthenticateRequestRequest\x1a$.helloworld.AuthenticateRequestReply\"\x00\x12\x46\n\n_full_path\x12\x1b.helloworld.FullPathRequest\x1a\x19.helloworld.FullPathReply\"\x00\x42\x36\n\x1bio.grpc.examples.helloworldB\x0fHelloWorldProtoP\x01\xa2\x02\x03HLWb\x06proto3'
 )
 
 
+
+
+_FULLPATHREQUEST = _descriptor.Descriptor(
+  name='FullPathRequest',
+  full_name='helloworld.FullPathRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='self', full_name='helloworld.FullPathRequest.self', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+    _descriptor.FieldDescriptor(
+      name='partial', full_name='helloworld.FullPathRequest.partial', index=1,
+      number=2, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=30,
+  serialized_end=78,
+)
+
+
+_FULLPATHREPLY = _descriptor.Descriptor(
+  name='FullPathReply',
+  full_name='helloworld.FullPathReply',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  create_key=_descriptor._internal_create_key,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='path', full_name='helloworld.FullPathReply.path', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=b"".decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  serialized_options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=80,
+  serialized_end=109,
+)
 
 
 _HELLOREQUEST = _descriptor.Descriptor(
@@ -59,8 +130,8 @@ _HELLOREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30,
-  serialized_end=76,
+  serialized_start=111,
+  serialized_end=157,
 )
 
 
@@ -91,8 +162,8 @@ _HELLOREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=78,
-  serialized_end=107,
+  serialized_start=159,
+  serialized_end=188,
 )
 
 
@@ -130,8 +201,8 @@ _USERNAMEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=109,
-  serialized_end=159,
+  serialized_start=190,
+  serialized_end=240,
 )
 
 
@@ -162,8 +233,8 @@ _USERNAMEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=161,
-  serialized_end=196,
+  serialized_start=242,
+  serialized_end=277,
 )
 
 
@@ -201,8 +272,8 @@ _PASSWORDENTERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=198,
-  serialized_end=253,
+  serialized_start=279,
+  serialized_end=334,
 )
 
 
@@ -233,8 +304,8 @@ _PASSWORDENTERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=255,
-  serialized_end=295,
+  serialized_start=336,
+  serialized_end=376,
 )
 
 
@@ -272,8 +343,8 @@ _PASSWORDCONFIRMATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=297,
-  serialized_end=368,
+  serialized_start=378,
+  serialized_end=449,
 )
 
 
@@ -304,8 +375,8 @@ _PASSWORDCONFIRMATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=370,
-  serialized_end=426,
+  serialized_start=451,
+  serialized_end=507,
 )
 
 
@@ -357,8 +428,8 @@ _LOGINATTEMPTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=428,
-  serialized_end=531,
+  serialized_start=509,
+  serialized_end=612,
 )
 
 
@@ -389,8 +460,8 @@ _LOGINATTEMPTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=533,
-  serialized_end=576,
+  serialized_start=614,
+  serialized_end=657,
 )
 
 
@@ -442,8 +513,8 @@ _AUTHENTICATEREQUESTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=578,
-  serialized_end=693,
+  serialized_start=659,
+  serialized_end=774,
 )
 
 
@@ -488,10 +559,12 @@ _AUTHENTICATEREQUESTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=695,
-  serialized_end=789,
+  serialized_start=776,
+  serialized_end=870,
 )
 
+DESCRIPTOR.message_types_by_name['FullPathRequest'] = _FULLPATHREQUEST
+DESCRIPTOR.message_types_by_name['FullPathReply'] = _FULLPATHREPLY
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
 DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
 DESCRIPTOR.message_types_by_name['UserNameReply'] = _USERNAMEREPLY
@@ -505,6 +578,20 @@ DESCRIPTOR.message_types_by_name['LoginAttemptRequest'] = _LOGINATTEMPTREQUEST
 DESCRIPTOR.message_types_by_name['AuthenticateRequestRequest'] = _AUTHENTICATEREQUESTREQUEST
 DESCRIPTOR.message_types_by_name['AuthenticateRequestReply'] = _AUTHENTICATEREQUESTREPLY
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
+
+FullPathRequest = _reflection.GeneratedProtocolMessageType('FullPathRequest', (_message.Message,), {
+  'DESCRIPTOR' : _FULLPATHREQUEST,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.FullPathRequest)
+  })
+_sym_db.RegisterMessage(FullPathRequest)
+
+FullPathReply = _reflection.GeneratedProtocolMessageType('FullPathReply', (_message.Message,), {
+  'DESCRIPTOR' : _FULLPATHREPLY,
+  '__module__' : 'taskFour_pb2'
+  # @@protoc_insertion_point(class_scope:helloworld.FullPathReply)
+  })
+_sym_db.RegisterMessage(FullPathReply)
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), {
   'DESCRIPTOR' : _HELLOREQUEST,
@@ -600,8 +687,8 @@ _GREETER = _descriptor.ServiceDescriptor(
   index=0,
   serialized_options=None,
   create_key=_descriptor._internal_create_key,
-  serialized_start=792,
-  serialized_end=1311,
+  serialized_start=873,
+  serialized_end=1464,
   methods=[
   _descriptor.MethodDescriptor(
     name='SayHello',
@@ -660,6 +747,16 @@ _GREETER = _descriptor.ServiceDescriptor(
     containing_service=None,
     input_type=_AUTHENTICATEREQUESTREQUEST,
     output_type=_AUTHENTICATEREQUESTREPLY,
+    serialized_options=None,
+    create_key=_descriptor._internal_create_key,
+  ),
+  _descriptor.MethodDescriptor(
+    name='_full_path',
+    full_name='helloworld.Greeter._full_path',
+    index=6,
+    containing_service=None,
+    input_type=_FULLPATHREQUEST,
+    output_type=_FULLPATHREPLY,
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
   ),

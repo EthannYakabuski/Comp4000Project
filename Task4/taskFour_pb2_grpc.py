@@ -45,6 +45,11 @@ class GreeterStub(object):
                 request_serializer=taskFour__pb2.AuthenticateRequestRequest.SerializeToString,
                 response_deserializer=taskFour__pb2.AuthenticateRequestReply.FromString,
                 )
+        self._full_path = channel.unary_unary(
+                '/helloworld.Greeter/_full_path',
+                request_serializer=taskFour__pb2.FullPathRequest.SerializeToString,
+                response_deserializer=taskFour__pb2.FullPathReply.FromString,
+                )
 
 
 class GreeterServicer(object):
@@ -92,6 +97,12 @@ class GreeterServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def _full_path(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GreeterServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -124,6 +135,11 @@ def add_GreeterServicer_to_server(servicer, server):
                     servicer.AuthenticateRequest,
                     request_deserializer=taskFour__pb2.AuthenticateRequestRequest.FromString,
                     response_serializer=taskFour__pb2.AuthenticateRequestReply.SerializeToString,
+            ),
+            '_full_path': grpc.unary_unary_rpc_method_handler(
+                    servicer._full_path,
+                    request_deserializer=taskFour__pb2.FullPathRequest.FromString,
+                    response_serializer=taskFour__pb2.FullPathReply.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -235,5 +251,22 @@ class Greeter(object):
         return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/AuthenticateRequest',
             taskFour__pb2.AuthenticateRequestRequest.SerializeToString,
             taskFour__pb2.AuthenticateRequestReply.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def _full_path(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/helloworld.Greeter/_full_path',
+            taskFour__pb2.FullPathRequest.SerializeToString,
+            taskFour__pb2.FullPathReply.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

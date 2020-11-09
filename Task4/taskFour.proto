@@ -42,7 +42,24 @@ service Greeter {
 
 
   rpc AuthenticateRequest (AuthenticateRequestRequest) returns (AuthenticateRequestReply) {}
+
+  
+  rpc _full_path (FullPathRequest) returns (FullPathReply) {}
+
+     
  
+
+}
+
+
+
+message FullPathRequest { 
+  string self = 1; 
+  string partial = 2; 
+}
+
+message FullPathReply {
+  string path = 1; 
 }
 
 // The request hello message
